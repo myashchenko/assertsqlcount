@@ -10,9 +10,9 @@ import io.github.yashchenkon.assertsqlcount.core.SqlHandler;
  */
 public class QueryCountsInspector implements StatementInspector {
 
-    private SqlHandler sqlHandler = new QueryCountsSqlHandler();
+    private final SqlHandler sqlHandler = new QueryCountsSqlHandler();
 
-    public String inspect(String sqlStatement) {
+    public String inspect(final String sqlStatement) {
         sqlHandler.handle(sqlStatement);
         return sqlStatement;
     }

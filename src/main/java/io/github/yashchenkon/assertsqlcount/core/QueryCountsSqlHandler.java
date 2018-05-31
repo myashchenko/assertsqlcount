@@ -8,8 +8,8 @@ import io.github.yashchenkon.assertsqlcount.types.QueryType;
 public class QueryCountsSqlHandler implements SqlHandler {
 
     @Override
-    public void handle(String sqlStatement) {
-        QueryType queryType = QueryType.getQueryType(sqlStatement);
+    public void handle(final String sqlStatement) {
+        final QueryType queryType = QueryType.getQueryType(sqlStatement);
         queryType.process(QueryCountsHolder.getQueryCounts());
     }
 }

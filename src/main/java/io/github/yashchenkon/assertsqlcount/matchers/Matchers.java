@@ -19,23 +19,23 @@ public class Matchers {
         return QueryCountsHolder.getQueryCounts();
     }
 
-    public static BaseQueryCountsMatcher hasSelectCount(int expectedCount) {
+    public static BaseQueryCountsMatcher hasSelectCount(final int expectedCount) {
         return new BaseQueryCountsMatcher(QueryCounts::getSelectCount, expectedCount);
     }
 
-    public static BaseQueryCountsMatcher hasUpdateCount(int expectedCount) {
+    public static BaseQueryCountsMatcher hasUpdateCount(final int expectedCount) {
         return new BaseQueryCountsMatcher(QueryCounts::getUpdateCount, expectedCount);
     }
 
-    public static BaseQueryCountsMatcher hasDeleteCount(int expectedCount) {
+    public static BaseQueryCountsMatcher hasDeleteCount(final int expectedCount) {
         return new BaseQueryCountsMatcher(QueryCounts::getDeleteCount, expectedCount);
     }
 
-    public static BaseQueryCountsMatcher hasInsertCount(int expectedCount) {
+    public static BaseQueryCountsMatcher hasInsertCount(final int expectedCount) {
         return new BaseQueryCountsMatcher(QueryCounts::getInsertCount, expectedCount);
     }
 
-    public static BaseQueryCountsMatcher hasCallCount(int expectedCount) {
+    public static BaseQueryCountsMatcher hasCallCount(final int expectedCount) {
         return new BaseQueryCountsMatcher(QueryCounts::getCallCount, expectedCount);
     }
 
@@ -44,25 +44,25 @@ public class Matchers {
         private final Function<QueryCounts, Integer> getter;
         private final int expectedCount;
 
-        public BaseQueryCountsMatcher(Function<QueryCounts, Integer> getter, int expectedCount) {
+        public BaseQueryCountsMatcher(final Function<QueryCounts, Integer> getter, final int expectedCount) {
             this.getter = getter;
             this.expectedCount = expectedCount;
         }
 
         @Override
-        public boolean matches(Object o) {
+        public boolean matches(final Object o) {
             if (o == null) {
                 throw new NullPointerException();
             }
 
-            QueryCounts queryCounts = (QueryCounts) o;
+            final QueryCounts queryCounts = (QueryCounts) o;
 
             return getter.apply(queryCounts) == expectedCount;
         }
 
         @Override
-        public void describeTo(Description description) {
-
+        public void describeTo(final Description description) {
+            description.appendText("Expected : ").appendValue(expectedCount);
         }
     }
 }
