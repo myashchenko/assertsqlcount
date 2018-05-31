@@ -41,7 +41,7 @@ public class UserControllerTest {
     public void shouldFindUser() throws Exception {
         User user = userRepository.findOne("1");
         user.getOrders().size();
-        // TBD
+        assertThat(queryCounts(), hasSelectCount(1));
     }
 }
 ```
@@ -56,6 +56,13 @@ Add following dependency to pom.xml
     <version>1.0.0</version>
 </dependency>
 ```
+
+If you are using Spring Boot, insert the following line to `application.properties`
+
+```
+spring.jpa.properties.hibernate.session_factory.statement_inspector=io.github.yashchenkon.assertsqlcount.inspector.QueryCountsInspector
+```
+
 ## Tests
 
 Description will be added later.
