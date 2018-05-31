@@ -25,6 +25,13 @@
         </developer>
     </developers>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/YashchenkoN/assertsqlcount/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/yashchenkon/assertsqlcount/issues</url>
